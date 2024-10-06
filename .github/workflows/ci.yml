@@ -5,12 +5,9 @@ on:
   - pull_request
 
 jobs:
-  tests:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Setup rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-    - name: Tests
-      run: cargo test
+  rust-ci:
+    name: Rust CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gabrielrufino/rust-ci@develop
