@@ -32,6 +32,12 @@ impl<T> Queue<T> {
   }
 }
 
+impl<T> Default for Queue<T> {
+  fn default() -> Self {
+    Self::new()
+  }
+}
+
 #[cfg(test)]
 mod tests {
   use super::Queue;
@@ -104,6 +110,25 @@ mod tests {
   fn test_dequeue_empty() {
     let mut queue: Queue<i32> = Queue::new();
     assert_eq!(queue.dequeue(), None);
+  }
+
+  #[test]
+  fn test_trait_default() {
+    let mut queue: Queue<i32>= Default::default();
+
+    assert!(queue.is_empty());
+    assert_eq!(queue.size(), 0);
+
+    queue.enqueue(42);
+    queue.enqueue(100);
+    
+    assert_eq!(queue.size(), 2);
+    assert_eq!(queue.peek(), Some(&42));
+
+    assert_eq!(queue.dequeue(), Some(42));
+    assert_eq!(queue.peek(), Some(&100));
+    assert_eq!(queue.dequeue(), Some(100));
+    assert!(queue.is_empty());
   }
 }
 
