@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  tests:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - name: Tests
+      run: cargo test
