@@ -1,5 +1,5 @@
 [package]
-name = "cube_rs"
+name = "structo"
 description = "Data structures made in Rust"
 version = "0.1.0"
 edition = "2021"

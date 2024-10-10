@@ -1,3 +1,3 @@
-# Cube_rs
+# Structo
 
 Data Structures and Algorithms made in Rust
