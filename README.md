@@ -1,3 +1,3 @@
 # Structo
 
-Data Structures and Algorithms made in Rust
+Data Structures made in Rust
