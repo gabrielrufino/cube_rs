@@ -1,22 +1,24 @@
-use std::collections::VecDeque;
-
 pub struct Queue<T> {
-  elements: VecDeque<T>,
+  elements: Vec<T>,
 }
 
 impl<T> Queue<T> {
   pub fn new() -> Self {
     Queue {
-      elements: VecDeque::new(),
+      elements: Vec::new(),
     }
   }
 
   pub fn enqueue(&mut self, item: T) {
-    self.elements.push_back(item);
+    self.elements.push(item);
   }
 
   pub fn dequeue(&mut self) -> Option<T> {
-    self.elements.pop_front()
+    if self.is_empty() {
+      None
+    } else {
+      Some(self.elements.remove(0))
+    }
   }
 
   pub fn is_empty(&self) -> bool {
@@ -28,7 +30,7 @@ impl<T> Queue<T> {
   }
 
   pub fn peek(&self) -> Option<&T> {
-    self.elements.front()
+    self.elements.first()
   }
 }
 
